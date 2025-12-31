@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include "argparse.h"
 #include "const.h"
-#include "option.h"
 #include "logger.h"
+#include "option.h"
+#include "safemem.h"
 
 static const char *const usages[] = {
   "nive [options] [[--] args]",
@@ -14,7 +15,7 @@ static const char *const usages[] = {
 option_t *option;
 
 int main(int argc, const char **argv) {
-  option = malloc(sizeof(option_t));
+  option = (option_t *)safe_malloc(sizeof(option_t));
   initialize_option(option);
 
   struct argparse_option options[] = {

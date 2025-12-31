@@ -1,6 +1,14 @@
 #ifndef CONST_H
 #define CONST_H
 
+#if defined(__GNUC__) && !defined(__cplusplus)
+#define INLINE __always_inline
+#elif defined(__clang__) || defined(_MSC_VER)
+#define INLINE inline
+#else
+#define INLINE
+#endif
+
 // Defining the version of Nive
 #define NIVE_MAJOR_VERSION    0
 #define NIVE_MINOR_VERSION    1
